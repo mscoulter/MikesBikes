@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="heading">
+    <span>My Shopping Cart</span>
+    <span style="float: right">Order Total: {{total/100 | currency}}</span>
+
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody ng-repeat="info in data">
+      <tr>
+        <td>
+          <h2>{{info.name}}</h2>
+          <img src="{{info.imageUrl}}" alt="" />
+          <p>
+            Caffeine Scale: {{info.caffeineScale}}
+          </p>
+          <p>
+            Ingredients: {{info.ingredients}}
+          </p>
+          <p>
+            Rating: {{info.rating}}
+          </p>
+        </td>
+        <td>
+          <span ng-hide="edit.showing">{{info.quantity}}</span>
+          <form ng-show="edit.showing" action="index.html" method="post">
+            <input ng-model="edit.newQ" type="number" style="width: 40px" name="name">
+          </form>
+        </td>
+        <td>
+          {{info.quantity * info.price/100 | currency}}
+        </td>
+        <td>
+          <button ng-click="edit.toggle()" ng-hide="edit.showing" type="button" class="btn btn-warning">Edit</button>
+          <button ng-click="edit.update($index, edit.newQ)" ng-show="edit.showing" type="button" class="btn btn-success">Save</button>
+          <button ng-click="remove($index)" type="button" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

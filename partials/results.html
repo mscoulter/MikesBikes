@@ -38,15 +38,12 @@
             <button type="submit" class="btn btn-warning">Add to Cart</button>
           </form>
           <div class="details">
+            <p><strong>Manufacturer:</strong> {{info.categories[0]}}</p>
             <p><strong>Price:</strong> {{info.price/100 | currency}}</p>
-            <p><strong>Caffeine Scale:</strong> {{info.caffeineScale}}</p>
-            <p><strong>Ingredients:</strong> {{info.ingredients}}</p>
+            <p><strong>Components:</strong> {{info.components}}</p>
+            <p><strong>Frame Material:</strong> {{info.frame}}</p>
             <p><strong>Rating:</strong> {{info.rating}}</p>
             <p><strong>In Stock?</strong> {{info.inStock ? 'Yes':'No'}}</p>
-            <p><strong>Categories:</strong></p>
-            <ul ng-repeat="cat in info.categories">
-              <li>{{cat}}</li>
-            </ul>
           </div>
         </td>
       </tr>
